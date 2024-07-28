@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="reproductor">
+        <h1>
+          Reproduciendo
+          <span class="cancion-actual"> </span>
+        </h1>
+        <ul>
+          <li><a href="" data-src="Stereo Love">Stereo love</a></li>
+          <li><a href="" data-src="Worth Nothing">Worth Nothing</a></li>
+        </ul>
+        <audio controls></audio>
+      </div>
+    </div>
+
+    <script>
+      $canciones = document.querySelectorAll("a");
+      $audio = document.querySelector("audio");
+      $cancionActual = document.querySelector(".cancion-actual");
+
+      $canciones.forEach((cancion) => {
+        cancion.addEventListener("click", (c) => {
+          c.preventDefault();
+          const nombre = cancion.getAttribute("data-src");
+          alert(nombre);
+          $cancionActual.innerText = nombre;
+          $audio.src = `./uploads/${nombre}.mp3`;
+          $audio.play();
+        });
+      });
+    </script>
+  </body>
+</html>
